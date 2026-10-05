@@ -1,48 +1,49 @@
-// Registering ScrollTrigger with core GSAP engine
-gsap.registerPlugin(ScrollTrigger);
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const viewportHeight = window.innerHeight;
 
-// 01. Entrance Animations on First Page Load
-window.addEventListener("DOMContentLoaded", () => {
-    const entranceTimeline = gsap.timeline();
+    const maxScroll = viewportHeight * 3;
+    const progress = Math.min(scrollY / maxScroll, 1);
     
-    entranceTimeline.from(".main-title", {
-        delay: 0.2,
-        duration: 1.4,
-        y: 60,
-        opacity: 0,
-        ease: "power4.out"
-    });
     
-    entranceTimeline.from(".stat-card", {
-        duration: 0.9,
-        y: 25,
-        opacity: 0,
-        stagger: 0.15,
-        ease: "power3.out"
-    }, "-=0.8");
-});
-
-// 02. Scroll-Linked Car Transformation (Fixed Center Rotation)
-gsap.to("#scrolling-object", {
-    scale: 2.8,                 
-    rotation: -45,              
-    transformOrigin: "50% 50%", 
-    scrollTrigger: {
-        trigger: ".main-viewport",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1
+    const scale = 1 + (progress * 1.4);       
+    const rotation = progress * -45;          
+    const translateX = progress * -140;      
+    const translateY = progress * -5;         
+    
+    const car = document.getElementById('scrolling-object');
+    if (car) {
+        car.style.transform = `scale(${scale}) translateX(${translateX}px) translateY(${translateY}px) rotate(${rotation}deg)`;
+        
+        
+        const carBody = car.querySelector('.car-body');
+        if (progress < 0.25) {
+            carBody.style.background = 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)';
+            carBody.style.boxShadow = '0 0 50px rgba(37, 99, 235, 0.5)';
+        } else if (progress < 0.50) {
+            carBody.style.background = 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)';
+            carBody.style.boxShadow = '0 0 50px rgba(220, 38, 38, 0.5)';
+        } else if (progress < 0.75) {
+            carBody.style.background = 'linear-gradient(135deg, #059669 0%, #047857 100%)';
+            carBody.style.boxShadow = '0 0 50px rgba(5, 150, 105, 0.5)';
+        } else {
+            carBody.style.background = 'linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)';
+            carBody.style.boxShadow = '0 0 50px rgba(124, 58, 237, 0.5)';
+        }
     }
-});
-
-// 03. Dissolve Intro Text on Displacement
-gsap.to(".frame-initial .content-box", {
-    opacity: 0,
-    y: -80,
-    scrollTrigger: {
-        trigger: ".frame-initial",
-        start: "top top",
-        end: "bottom center",
-        scrub: true
+    
+    
+    const sectionIndex = scrollY / viewportHeight;
+    for (let i = 1; i <= 4; i++) {
+        const content = document.getElementById(`content${i}`);
+        if (content) {
+            
+            const targetOpacity = Math.max(1 - Math.abs(sectionIndex - (i - 1)) * 2.0, 0);
+            content.style.opacity = targetOpacity;
+            
+            
+            const targetY = (sectionIndex - (i - 1)) * -25;
+            content.style.transform = `translateY(${targetY}px)`;
+        }
     }
 });

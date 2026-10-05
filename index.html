@@ -3,39 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Itzfizz Digital | Web Showcase</title>
+    <title>Itzfizz - Premium Pinned Scroll Animation</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cloudflare.com"></script>
-    <script src="https://cloudflare.com"></script>
 </head>
 <body>
+
     <div class="main-viewport">
+        
+        
         <div class="graphic-layer">
-            <!-- बिना इंटरनेट के चलने वाली इन-बिल्ट वेक्टर कार -->
-            <svg id="scrolling-object" viewBox="0 0 100 50" xmlns="http://w3.org">
-                <path d="M10 30 Q 15 25, 25 25 L 40 25 Q 50 10, 65 15 L 85 20 Q 95 25, 95 35 L 5 35 Z" fill="#dc2626" />
-                <path d="M28 25 L 40 25 L 43 18 L 32 18 Z M45 25 L 60 25 L 58 17 L 47 18 Z" fill="#ffffff" opacity="0.7"/>
-                <circle cx="25" cy="35" r="7" fill="#18181b" stroke="#ffffff" stroke-width="1"/>
-                <circle cx="75" cy="35" r="7" fill="#18181b" stroke="#ffffff" stroke-width="1"/>
-            </svg>
+            <div id="scrolling-object">
+                <div class="car-body">
+                    <div class="car-cockpit"></div>
+                    <div class="car-wheel wheel-front"></div>
+                    <div class="car-wheel wheel-back"></div>
+                    <span class="element-text">CAR</span>
+                </div>
+            </div>
         </div>
-        <section class="trigger-zone frame-initial">
-            <div class="content-box">
-                <h1 class="main-title">WELCOMEITZFIZZ</h1>
+
+        
+        <section class="trigger-zone frame-1">
+            <div class="content-box" id="content1">
+                <h1 class="main-title">W E L C O M E &nbsp; I T &nbsp; Z &nbsp; F &nbsp; I &nbsp; Z &nbsp; Z</h1>
                 <div class="dashboard-stats">
-                    <div class="stat-card"><span class="stat-number">94%</span><p class="stat-label">Retention Rate</p></div>
-                    <div class="stat-card"><span class="stat-number">0.3s</span><p class="stat-label">Render Delay</p></div>
-                    <div class="stat-card"><span class="stat-number">120+</span><p class="stat-label">Deployments</p></div>
+                    <div class="stat-card">
+                        <span class="stat-number text-blue">58%</span>
+                        <span class="stat-label">Increase in pick up point use</span>
+                    </div>
                 </div>
             </div>
         </section>
-        <section class="trigger-zone frame-secondary">
-            <div class="content-box">
-                <h2>NEXT-GEN WEB ARCHITECTURE</h2>
-                <p>Building high-performance interfaces with buttery smooth interactive physics.</p>
+
+        
+        <section class="trigger-zone frame-2">
+            <div class="content-box" id="content2" style="opacity: 0;">
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <span class="stat-number text-red">23%</span>
+                        <span class="stat-label">Decreased in customer phone calls</span>
+                    </div>
+                </div>
             </div>
         </section>
+
+        
+        <section class="trigger-zone frame-3">
+            <div class="content-box" id="content3" style="opacity: 0;">
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <span class="stat-number text-green">27%</span>
+                        <span class="stat-label">Increase in pick up point use</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="trigger-zone frame-4">
+            <div class="content-box" id="content4" style="opacity: 0;">
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <span class="stat-number text-purple">40%</span>
+                        <span class="stat-label">Decreased in customer phone calls</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
